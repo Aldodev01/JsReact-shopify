@@ -1,0 +1,64 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "all",
+      "sup": 3,
+      "link": "/our-fav/1"
+    },
+    {
+      "id": 2,
+      "name": "backpacks",
+      "sup": 2,
+      "link": "/our-fav/2"
+    },
+    {
+      "id": 3,
+      "name": "blankets",
+      "sup": 5,
+      "link": "/our-fav/3"
+    },
+    {
+      "id": 4,
+      "name": "chairs",
+      "sup": 1,
+      "link": "/our-fav/4"
+    },
+    {
+      "id": 5,
+      "name": "containers",
+      "sup": 0,
+      "link": "/our-fav/5"
+    },
+    {
+      "id": 6,
+      "name": "cookware",
+      "sup": 6,
+      "link": "/our-fav/6"
+    },
+    {
+      "id": 7,
+      "name": "light",
+      "sup": 4,
+      "link": "/our-fav/7"
+    },
+    {
+      "id": 8,
+      "name": "sleeping bags",
+      "sup": 8,
+      "link": "/our-fav/8"
+    },
+    {
+      "id": 9,
+      "name": "tens",
+      "sup": 9,
+      "link": "/our-fav/9"
+    },
+    {
+      "id": 10,
+      "name": "tools",
+      "sup": 10,
+      "link": "/our-fav/10"
+    }
+  ]
+}

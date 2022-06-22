@@ -1,0 +1,88 @@
+.nav2-icons {
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+.fadeFrom {
+  transform: translateY(-200vh);
+}
+
+.fadeTo {
+  animation-name: topToBottom;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+.opacityIn {
+  animation-name: opacityGone;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+.paddingFrom {
+  padding: 0px 1rem;
+}
+
+.paddingTo {
+  animation-name: paddingFade;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  padding: 0;
+  padding: 0px 50px;
+}
+
+@keyframes paddingFade {
+  from {
+    padding: 0px 1rem;
+  }
+  to {
+    padding: 0px 50px;
+  }
+}
+
+@keyframes opacityGone {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes topToBottom {
+  from {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
