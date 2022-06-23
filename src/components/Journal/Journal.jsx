@@ -6,7 +6,7 @@ const Journal = () => {
     <div className="p-[20px] mb-[60px]">
       <h1 className=" text-orange-400 text-xl ml-[40px]">Journal</h1>
       <br />
-      <div className="w-screen flex flex-col gap-5 lg:flex-row justify-center">
+      <div className="w-full flex flex-col gap-5 lg:flex-row justify-center">
         <div className="w-full max-w-[500px] lg:w-1/2 flex flex-col">
           <h1 className="text-4xl lg:text-5xl font-medium">A slow path</h1>
           <h1 className="text-lg mb-[30px]">Posted on June 21, 2022</h1>

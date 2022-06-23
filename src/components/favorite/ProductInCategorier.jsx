@@ -47,7 +47,7 @@ const ProductInCategorier = ({
       ) : (
         <p>$ {price}</p>
       )}
-      <p className="text-[10px] lg:text-lg text-center">{name}</p>
+      <p className="text-[10px] w-full lg:text-lg text-center">{name}</p>
     </div>
   );
 };

@@ -35,8 +35,8 @@ const Favorite = () => {
         Our Favorite
       </h1>
       <br />
-      <div className="w-screen">
-        <ul className="flex w-screen flex-wrap items-center gap-10">
+      <div className="w-full">
+        <ul className="flex w-full flex-wrap items-center gap-10">
           {CategoryJSON.category.map((e, i) => {
             return (
               <li
@@ -65,7 +65,7 @@ const Favorite = () => {
       <br />
       <br />
 
-      <div className="flex-wrap w-screen flex items-center justify-center">
+      <div className="flex-wrap w-full flex items-center justify-center">
         {product !== null ? (
           product.map((e, i) => {
             return (
@@ -92,7 +92,7 @@ const Favorite = () => {
             );
           })
         ) : (
-          <p className="flex items-center w-screen justify-center font-bold">
+          <p className="flex items-center w-full justify-center font-bold">
             Sorry!, Nothing Products
           </p>
         )}

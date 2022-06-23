@@ -55,8 +55,8 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex w-full bg-black justify-between items-center text-white p-[20px]">
-        @copyright 2022 Colors, Powered by Shopify{" "}
+      <div className="flex w-full flex-col gap-6 md:flex-row bg-black justify-between items-center text-white p-[20px]">
+        @copyright 2022 Colors, Powered by Shopify
         <div className="flex gap-5 ">
           <button className="bg-inherit border-2 border-white py-[5px] px-[10px] flex items-center justify-center">
             English

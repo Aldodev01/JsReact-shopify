@@ -178,7 +178,7 @@ const Home = () => {
         className={`duration-300 ${
           openSidebar.right
             ? "fixed w-[400px] right-0"
-            : "w-[0px] absolute top-[-4000px]"
+            : "w-[0px] absolute top-[-4000px] left-[0]"
         } bg-slate-700 h-full z-30 p-4 `}
       >
         <div className="mt-[70px] flex w-full justify-between pb-3 mb-2 items-center border-b-[3px] border-white">
