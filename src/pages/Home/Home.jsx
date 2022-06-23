@@ -12,11 +12,15 @@ import {
   BrowseCategory,
   Detail,
   Favorite,
+  Footer,
   Futures,
+  Header,
+  Journal,
+  Location,
   Navbar1,
   Navbar2,
   Rare,
-  RecomendedItems,
+  Subscribe,
   Video,
 } from "../../components";
 import { CartContext } from "../../context/CartContext";
@@ -30,7 +34,6 @@ const Home = () => {
     right: false,
     loading: false,
   });
-
   const handleRightbar = async () => {
     await setOpenSidebar({
       ...openSidebar,
@@ -58,6 +61,22 @@ const Home = () => {
         alert("Failed add to cart :(, try the different products");
       });
   };
+
+  const handleCart = (name, value, index) => {
+    let activePackageData = {
+      ...cartAddC[index],
+    };
+    activePackageData[name] = value;
+    setCartAddC((oldData) => {
+      oldData[index] = activePackageData;
+      return [...oldData];
+    });
+  };
+  const countingPrice = cartAddC.reduce(
+    (idx, value) => (idx = idx + value.price),
+    0
+  );
+
   return (
     <div className="flex">
       <div
@@ -121,10 +140,15 @@ const Home = () => {
               left: !openSidebar.left,
             });
           }}
+          onClickRightbar={() => {
+            setOpenSidebar({
+              ...openSidebar,
+              right: !openSidebar.right,
+            });
+          }}
         />
         <br />
-        <br />
-        <br />
+        <Header />
         <br />
         <br />
         <Rare />
@@ -144,15 +168,17 @@ const Home = () => {
 
         <BrowseCategory />
         <Video />
-        <RecomendedItems />
         <Futures />
-        {/* <Subscribe /> */}
+        <Journal />
+        <Location />
+        <Subscribe />
+        <Footer />
       </div>
       <div
         className={`duration-300 ${
           openSidebar.right
             ? "fixed w-[400px] right-0"
-            : "w-[0px] absolute right-[-4000px]"
+            : "w-[0px] absolute top-[-4000px]"
         } bg-slate-700 h-full z-30 p-4 `}
       >
         <div className="mt-[70px] flex w-full justify-between pb-3 mb-2 items-center border-b-[3px] border-white">
@@ -171,17 +197,30 @@ const Home = () => {
         <div className="w-full flex flex-col h-[60%] overflow-y-scroll ">
           {/*  */}
           {cartAddC.map((e, i) => {
-            const stock = e.stock;
-            let newStock = 1;
-            console.log(newStock, "9999999999");
+            async function CountingMinus() {
+              const countStockMin = (await e.stock) <= 1 ? 1 : e.stock - 1;
+              const countPriceMin = e.price / (await e.stock);
+              await handleCart("stock", countStockMin, i);
+              await handleCart("price", countPriceMin, i);
+            }
+
+            async function CountingPlus() {
+              const countStockPlus =
+                (await e.stock) > productC.stock ? productC.stock : e.stock + 1;
+              const countPricePlus = (await e.price) * countStockPlus;
+              await handleCart("stock", countStockPlus, i);
+              await handleCart("price", countPricePlus, i);
+            }
+
             return (
               <div
                 key={i}
                 className="w-[95%] flex gap-3 pb-3 mb-7 relative border-b-[1px] border-white"
               >
                 <img
-                  src="https://picsum.photos/seed/300/300"
+                  src={e.image}
                   className="w-[100px] h-[100px] object-cover object-center"
+                  alt={e.name}
                 />
                 <div className="flex flex-1 flex-col gap-3  ">
                   <h1 className="underline text-orange-500 text-xl">
@@ -190,26 +229,20 @@ const Home = () => {
                   <div className="flex text-white items-center gap-2">
                     <HiOutlineMinusSm
                       className="cursor-pointer"
-                      onClick={() => {
-                        newStock = stock <= 1 ? 1 : stock - 1;
-                      }}
+                      onClick={CountingMinus}
                     />
                     <input
                       className="bg-inherit w-[50px] outline-none text-center border-[1px] border-white  py-[2px]"
-                      value={newStock}
+                      value={e.stock}
+                      disabled
                     />
                     <AiOutlinePlus
                       className="cursor-pointer"
-                      onClick={() => {
-                        newStock = stock + 1;
-                      }}
+                      onClick={CountingPlus}
                     />
                   </div>
                 </div>
-                <AiOutlineClose
-                  className="text-white cursor-pointer"
-                  onClick={() => {}}
-                />
+                <AiOutlineClose className="text-white cursor-pointer" />
                 <h1 className="text-white absolute right-2 bottom-3">
                   $ {e.price}
                 </h1>
@@ -221,7 +254,9 @@ const Home = () => {
         </div>
         <div className="w-full border-t-2 flex justify-between items-center  border-white">
           <h1 className=" mt-3 text-2xl text-white font-semibold">Subtotal</h1>
-          <h1 className=" mt-3 text-2xl text-white font-semibold">$ 800</h1>
+          <h1 className=" mt-3 text-2xl text-white font-semibold">
+            $ {countingPrice}
+          </h1>
         </div>
         <h2 className="text-sm text-orange-500 mt-3">
           Tax included and shipping calculated at checkout.

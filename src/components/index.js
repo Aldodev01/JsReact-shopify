@@ -9,6 +9,9 @@ import BrowseCategory from "./browseCatagory/BrowseCategory";
 import Video from "./Video/Video";
 import Futures from "./futures/Futures";
 import Detail from "./Detail/Detail";
+import Header from "./Header/Header";
+import Location from "./Location/Location";
+import Journal from "./Journal/Journal";
 
 export {
   Navbar1,
@@ -22,4 +25,7 @@ export {
   Video,
   Futures,
   Detail,
+  Header,
+  Location,
+  Journal,
 };

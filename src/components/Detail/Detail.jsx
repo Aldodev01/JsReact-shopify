@@ -11,6 +11,7 @@ import { ImLeaf } from "react-icons/im";
 import { GiCrackedGlass } from "react-icons/gi";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
 import { ProductContext } from "../../context/ProductContext";
+import { useNavigate } from "react-router-dom";
 const description =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet eligendi obcaecati neque explicabo commodi totam veritatis excepturi quo illo ut natus omnis, similique maiores nulla. Perspiciatis dolorum sunt voluptate ipsa";
 
@@ -26,6 +27,7 @@ const Detail = ({
   onClickRightbar,
   loading,
 }) => {
+  const navigate = useNavigate();
   const [productC, setProductC] = useContext(ProductContext);
   const [state, setState] = useState({
     sizeActive: 0,
@@ -51,12 +53,20 @@ const Detail = ({
     },
   ];
   return (
-    <div className="w-screen p-[2%]" key={id} id={id}>
+    <div
+      className="w-screen mb-[60px] p-[2%]"
+      key={id}
+      id={id}
+      onMouseLeave={(e) => {
+        e.preventDefault();
+        navigate("/");
+      }}
+    >
       <div
         className={`w-full bg-orange-100 flex flex-col md:flex-row justify-center gap-[20px]`}
       >
         <div className="w-full md:w-6/12">
-          <img src={src} className="w-full h-full" />
+          <img src={src} className="w-full h-full" alt={name} />
         </div>
         <div className="flex w-full md:w-6/12 flex-col p-[20px] relative">
           <h1 className=" text-5xl font-medium">{name}</h1>
@@ -135,7 +145,6 @@ const Detail = ({
             <a
               href="https://themes.shopify.com/themes/colors/styles/generic/preview?surface_inter_position=2&surface_intra_position=10&surface_type=all"
               className=" text-orange-400"
-              target="_blank"
             >
               Stutterheim
             </a>

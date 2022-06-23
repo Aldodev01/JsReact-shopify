@@ -2,7 +2,7 @@ import React from "react";
 
 const Video = () => {
   return (
-    <div className="w-screen relative flex flex-col items-center justify-center">
+    <div className="w-screen mb-[60px] relative flex flex-col items-center justify-center">
       <video
         src="https://cdn.shopify.com/s/files/1/0895/1746/files/Mountains_in_the_fog.mp4?v=1651652817"
         loop

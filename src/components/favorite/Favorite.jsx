@@ -8,7 +8,6 @@ import ProductInCategorier from "./ProductInCategorier";
 const Favorite = () => {
   // const navigate = useNavigate();
   const [productC, setProductC] = useContext(ProductContext);
-  console.log(productC, "asop");
   const [productQuery, setProductQuery] = useState({
     page: 1,
     size: 50,
@@ -32,7 +31,7 @@ const Favorite = () => {
 
   return (
     <div className="p-5 mb-[100px]">
-      <h1 className="font-semibold w-[120px]  text-orange-500 text-lg hover:border-b-[3px] border-orange-300 cursor-pointer">
+      <h1 className="font-semibold w-[120px] text-orange-500 text-lg hover:border-b-[3px] border-orange-300 cursor-pointer">
         Our Favorite
       </h1>
       <br />

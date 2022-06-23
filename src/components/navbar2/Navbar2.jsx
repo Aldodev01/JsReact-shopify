@@ -4,14 +4,14 @@ import { BiSearch, BiUser } from "react-icons/bi";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import "./Navbar2.css";
-import { MobileContext } from "../../context/MobileContext";
-const Navbar2 = ({ onClickLeftbar }) => {
+import { CartContext } from "../../context/CartContext";
+const Navbar2 = ({ onClickLeftbar, onClickRightbar }) => {
+  const [cartAddC, setCartAddC] = useContext(CartContext);
   const [show, handleShow] = useState({
     otherNavbar: false,
     option: false,
     background: false,
   });
-  const [mobile, setMobile] = useContext(MobileContext);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -36,6 +36,12 @@ const Navbar2 = ({ onClickLeftbar }) => {
         });
     });
   }, []);
+
+  const countingStock = cartAddC.reduce(
+    (idx, value) => (idx = idx + value.stock),
+    0
+  );
+
   return (
     <div
       className={`${
@@ -79,17 +85,23 @@ const Navbar2 = ({ onClickLeftbar }) => {
             <option value="">Rupiah(Rp)</option>
           </select> */}
           <BiUser
-            className="text-[40px] nav2-icons hidden lg:flex"
+            className="text-[40px] nav2-icons hidden lg:flex cursor-pointer"
             style={{ fontSize: 40 }}
           />
           <BiSearch
-            className="text-[40px] nav2-icons"
+            className="text-[40px] nav2-icons cursor-pointer"
             style={{ fontSize: 40 }}
           />
           <FaShoppingCart
-            className="text-[40px] nav2-icons hidden sm:hidden md:flex"
+            className="text-[40px] nav2-icons hidden sm:hidden md:flex cursor-pointer"
             style={{ fontSize: 40 }}
+            onClick={onClickRightbar}
           />
+          {countingStock < 1 ? null : (
+            <div className="w-[25px] h-[25px] bg-orange-400 text-white rounded-full flex items-center justify-center">
+              {countingStock}
+            </div>
+          )}
         </div>
       </div>
 
@@ -198,6 +210,7 @@ const Navbar2 = ({ onClickLeftbar }) => {
           <img
             src="https://images.unsplash.com/photo-1655696644743-972ed99b89f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=908&q=80"
             className="w-[230px] h-[140px]"
+            alt="unsplash"
           />
           <p>Around the Firebound</p>
         </div>

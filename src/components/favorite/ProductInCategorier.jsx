@@ -12,17 +12,19 @@ const ProductInCategorier = ({
   const [state, setState] = useState(src);
   return (
     <div
-      className={`w-full mt-[50px] flex flex-col items-center hover:cursor-pointer  h-full ${
+      className={`w-full mt-[50px] flex flex-col items-center justify-start hover:cursor-pointer  h-full ${
         length <= 5
-          ? ` max-w-[480px] max-h-[480px]`
-          : `max-w-[340px] max-h-[340px]`
+          ? `max-w-[220px] md:max-h-[220px] lg:max-w-[480px] lg:max-h-[480px]`
+          : `max-w-[220px] md:max-h-[220px] lg:max-w-[340px] lg:max-h-[340px]`
       }`}
       key={kop + 1}
       onClick={onClick}
     >
       <div
         className={`bg-orange-400 ${
-          length <= 5 ? ` w-[430px] h-[430px]` : `w-[290px] h-[290px]`
+          length <= 5
+            ? `max-w-[170px] md:max-h-[170px] lg:w-[430px] lg:h-[430px]`
+            : `max-w-[170px] md:max-h-[170px] lg:w-[290px] lg:h-[290px]`
         } `}
       >
         <img
@@ -39,13 +41,13 @@ const ProductInCategorier = ({
       </div>
 
       {disc ? (
-        <div className="flex gap-3 text-orange-300">
+        <div className="text-[10px] lg:text-lg flex gap-3 text-orange-300">
           <del>$ {price}</del> <p>From $ {disc}</p>
         </div>
       ) : (
         <p>$ {price}</p>
       )}
-      <p className=" text-center">{name}</p>
+      <p className="text-[10px] lg:text-lg text-center">{name}</p>
     </div>
   );
 };

@@ -2,6 +2,22 @@
 
 import { contextApi } from "./ApiContext";
 
+export const CartGet = async () => {
+  try {
+    const result = await contextApi(`/api/v1/cart/`, {
+      method: "GET",
+      headers: {
+        // "access-control-allow-origin" : "*",
+        "Content-Type": "application/json",
+        //   Authorization: "Bearer " + token,
+      },
+    });
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const CartAdd = async (productId, qty) => {
   try {
     const result = await contextApi(

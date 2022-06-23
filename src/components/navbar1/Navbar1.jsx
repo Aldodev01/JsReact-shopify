@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { AiOutlineMobile } from "react-icons/ai";
@@ -46,7 +46,7 @@ const Navbar1 = () => {
         Try Theme
       </button>
 
-      <div className="flex gap-3 flex md:hidden">
+      <div className="flex gap-3 md:hidden">
         <span className={`w-7 h-7 border-2 rounded-full bg-yellow-600`}></span>
         <span className={`w-7 h-7 border-2 rounded-full bg-green-300`}></span>
         <span className={`w-7 h-7 border-2 rounded-full bg-orange-500`}></span>
